@@ -21,6 +21,11 @@ function init (){
     .then (resp => resp.json())
     .then (noodles => {
         console.log(noodles)
+        deetsImg.src = noodles[0].image
+        h2.textContent = noodles[0].name
+        h3.textContent = noodles[0].restaurant
+        rating.textContent = noodles[0].rating
+        comment.textContent = noodles[0].comment
         noodles.forEach(renderNoodles)
     })
 }
@@ -48,13 +53,20 @@ function uploadNew (e){
     let newUpperImg = document.createElement('img')
     newUpperImg.src = newImg.value
     imgDiv.append(newUpperImg)
+    newImg = newImg.value
+    newName = newName.value
+    newRestaurant = newRestaurant.value
+    newRating = newRating.value
+    newComment = newComment.value
+    form.reset()
     newUpperImg.addEventListener ('click', (e) => {
-        console.log(e)
-        deetsImg.src = newImg.value
-        h2.textContent = newName.value
-        h3.textContent = newRestaurant.value
-        rating.textContent = newRating.value
-        comment.textContent = newComment.value
+        //console.log(e)
+        deetsImg.src = newImg
+        h2.textContent = newName
+        h3.textContent = newRestaurant
+        rating.textContent = newRating
+        comment.textContent = newComment
+      
     })
 }
 
